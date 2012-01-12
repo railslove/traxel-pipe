@@ -5,5 +5,7 @@ get '/' do
 end
 
 get '/ping' do
-  "Hello World!"
+  Pusher['test_channel'].trigger('greet', {
+    :greeting => "Hello there!"
+  })
 end
