@@ -1,8 +1,8 @@
 %html
   %head
-    %script{:src => "http://js.pusherapp.com/<%= APP_CONFIG[:current_js_version] %>/pusher.min.js"}
+    %script{:src => "http://js.pusherapp.com/#{APP_CONFIG[:current_js_version]}/pusher.min.js"}
     :javascript
-      var pusher = new Pusher('<%= Pusher.key %>'); // uses your API KEY
+      var pusher = new Pusher('#{Pusher.key}'); // uses your API KEY
       var channel = pusher.subscribe('test_channel');
       channel.bind('greet', function(data){
         alert(data.greeting);
