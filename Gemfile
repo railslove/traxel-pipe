@@ -1,6 +1,10 @@
 source 'http://rubygems.org'
 gem 'sinatra'
+gem 'sinatra-contrib'
+
 gem 'haml'
-gem 'pusher'
 gem 'coffee-script'
-gem 'sass'
+gem 'compass'
+
+gem 'pusher'
+gem 'json'

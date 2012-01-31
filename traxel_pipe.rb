@@ -1,4 +1,25 @@
+require 'compass'
 require 'sinatra'
+require 'pusher'
+require 'json'
+require 'haml'
+require 'coffee_script'
+
+
+configure :development do
+  require 'sinatra/reloader'
+  require './pusher_development_config.rb'
+end
+
+configure do
+  Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.config'))
+end
+
+# at a minimum, the main sass file must reside within the ./views directory. here, we create a ./views/stylesheets directory where all of the sass files can safely reside.
+get '/stylesheets/:name.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options )
+end
 
 get '/' do
   haml :index
@@ -9,7 +30,6 @@ get '/application.js' do
 end
 
 get '/ping' do
-  Pusher['test_channel'].trigger('greet', {
-    :greeting => "Hello there!"
-  })
+  return_hash = request.env.to_hash.merge(request.params.to_hash)
+  Pusher['test_channel'].trigger('ping', return_hash.to_json)
 end

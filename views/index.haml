@@ -1,17 +1,26 @@
 %html
   %head
-    %script{:src => "http://js.pusher.com/1.11/pusher.min.js"}
+    %link{:type => "text/css", :rel => "stylesheet", :media => "all", :href => "/stylesheets/application.css"}
+    %script{:src => "http://js.pusher.com/1.11/pusher.min.js", :type => "text/javascript"}
+    %script{:src => "js/jquery-1.7.1.js", :type => "text/javascript"}
     :javascript
-      var pusher = new Pusher('#{Pusher.key}'); // uses your API KEY
-      var channel = pusher.subscribe('test_channel');
-      channel.bind('greet', function(data){
-        alert(data.greeting);
-      });
+      var ENVIRONMENT = '#{settings.environment}';
+      var PUSHER_KEY = '#{Pusher.key}';
+    %script{:src => "application.js"}
   %body
     %header
       %h1
         Traxel Pipe
     #content
-      
+      %table#main
+        %thead
+          %tr
+            %th= "PATH_INFO"
+            %th= "QUERY_STRING"
+            %th= "REMOTE_ADDR"
+            %th= "HTTP_COOKIE"
+
+        %tbody
+
     %footer
       powered by heroku & pusherapp

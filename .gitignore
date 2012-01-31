@@ -1,3 +1,5 @@
 *.sublime-project
 *.sublime-workspace
 .rvmrc
+pusher_development_config.rb
+.sass-cache/*

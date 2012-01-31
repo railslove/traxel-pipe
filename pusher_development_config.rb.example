@@ -1,0 +1,3 @@
+Pusher.app_id = 2558
+Pusher.key    = 'YOUR_KEY'
+Pusher.secret = 'YOUR_SECRET'
