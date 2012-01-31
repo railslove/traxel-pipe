@@ -1,0 +1,22 @@
+table#main
+  width: 100%
+  td, th
+    border: 1px solid silver
+    padding: 2px
+  tr.details
+    display: none
+  span.param-name
+    color: blue
+    font-weight: bold
+    &:after
+      color: $base-font-color
+      content: ":"
+      font-weight: normal
+  span.param-value
+    color: green
+    padding-right: 5px
+    &:after
+      color: $base-font-color
+      content: ","
+    &:last-child:after
+      content: ""

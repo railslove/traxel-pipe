@@ -1,12 +1,17 @@
 %html
   %head
+    %title= "Traxel Pipe"
+
     %link{:type => "text/css", :rel => "stylesheet", :media => "all", :href => "/stylesheets/application.css"}
+
     %script{:src => "http://js.pusher.com/1.11/pusher.min.js", :type => "text/javascript"}
     %script{:src => "js/jquery-1.7.1.js", :type => "text/javascript"}
+    %script{:src => "js/json2.js", :type => "text/javascript"}
     :javascript
       var ENVIRONMENT = '#{settings.environment}';
       var PUSHER_KEY = '#{Pusher.key}';
     %script{:src => "application.js"}
+
   %body
     %header
       %h1
@@ -15,12 +20,30 @@
       %table#main
         %thead
           %tr
-            %th= "PATH_INFO"
-            %th= "QUERY_STRING"
-            %th= "REMOTE_ADDR"
-            %th= "HTTP_COOKIE"
+            %th= "Resource"
+            %th= "Query string"
+            %th= "IP"
+            %th= "Cookie"
+            %th
 
         %tbody
-
+          %tr.summary
+            %td= @env['PATH_INFO']
+            %td
+              -@params.each do |key, value|
+                %span.param-name= key
+                %span.param-value= value
+            %td= @env['REMOTE_ADDR']
+            %td= @env['HTTP_COOKIE']
+            %td
+              %a.more{:href => "#"}= "more"
+          %tr.details
+            %td{:colspan => 4}
+              =request.inspect
+            %td
     %footer
-      powered by heroku & pusherapp
+      %p
+        powered by
+        %a{:href => "http://heroku.com"}= "heroku"
+        &
+        %a{:href => "http://pusherapp.com"}= "pusherapp"
