@@ -8,7 +8,7 @@ require 'coffee_script'
 
 configure :development do
   require 'sinatra/reloader'
-  require './pusher_development_config.rb'
+  require File.join(Sinatra::Application.root, 'config', 'pusher_development_config.rb')
 end
 
 configure do
