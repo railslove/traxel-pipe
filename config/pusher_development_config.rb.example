@@ -1,3 +1,6 @@
-Pusher.app_id = 2558
+# Put your pusher development credentials here:
+# Find the credentials on heroku by going to the Pusher dashboard of your app, select 'developement' and then 'API access'
+
+Pusher.app_id = 'YOUR_APP_ID'
 Pusher.key    = 'YOUR_KEY'
 Pusher.secret = 'YOUR_SECRET'

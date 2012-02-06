@@ -27,20 +27,20 @@
             %th
 
         %tbody
-          %tr.summary
-            %td= @env['PATH_INFO']
-            %td
-              -@params.each do |key, value|
-                %span.param-name= key
-                %span.param-value= value
-            %td= @env['REMOTE_ADDR']
-            %td= @env['HTTP_COOKIE']
-            %td
-              %a.more{:href => "#"}= "more"
-          %tr.details
-            %td{:colspan => 4}
-              =request.inspect
-            %td
+          / %tr.summary
+          /   %td= @env['PATH_INFO']
+          /   %td
+          /     -@params.each do |key, value|
+          /       %span.param-name= key
+          /       %span.param-value= value
+          /   %td= @env['REMOTE_ADDR']
+          /   %td= @env['HTTP_COOKIE']
+          /   %td
+          /     %a.more{:href => "#"}= "more"
+          / %tr.details
+          /   %td{:colspan => 4}
+          /     =request.inspect
+          /   %td
     %footer
       %p
         powered by
